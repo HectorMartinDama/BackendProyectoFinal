@@ -1,13 +1,16 @@
-const bcrypt= require('bcrypt')
-// create router
-const userRouter= require('express').Router()
+const userController= require('../controllers/userController')
+const userRouter= require('express').Router() // create router
+const { validateCreate } = require('../validators/users')
 
 
 
 
-userRouter.get(('/'), (req, res)=>{
-    res.send('Welcome to api user administrator')
-})
+userRouter
+    .get(('/'), userController.getBienvenida)
+    .post(('/'), userController.createUser)
+    .post(('/email'), validateCreate, userController.crateEmail)
+
+
 
 
 

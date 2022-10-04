@@ -1,8 +1,11 @@
 const express= require('express')
 const app= express()
 const cors= require('cors')
+const bodyParse= require("body-parser")
 const mongoose= require('mongoose')
-const userRouter= require('./routers/users') // imports routers
+const userRouter= require('../routers/users') // imports routers
+
+
 
 
 // connect database
@@ -13,10 +16,9 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 })
 
 // use
-app.use(express.json())
+app.use(bodyParse.json()) // middleware
 app.use(cors())
-// asing routers
-app.use(('/api/users'), userRouter)
+app.use(('/api/users'), userRouter) // asing routers
 
 
 module.exports= app
