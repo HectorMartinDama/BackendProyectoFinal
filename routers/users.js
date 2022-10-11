@@ -6,9 +6,8 @@ const { validateCreate } = require('../validators/users')
 
 
 userRouter
-    .get(('/'), userController.getBienvenida)
-    .post(('/'), userController.createUser)
-    .post(('/email'), validateCreate, userController.crateEmail)
+    .post(('/createUser'), validateCreate, userController.createUser)
+    .post(('/login'), userController.login)
 
 
 

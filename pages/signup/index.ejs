@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>Cream KICKS</title>
+</head>
+<body>
+
+    <!-- Imprime los errores del formulario -->
+    <% if(typeof errors != 'undefined') { %>
+        <% errors.forEach((error) => { %>
+            <p><%= error.msg %></p>
+            <% }) %>
+        <% } %>
+
+    
+    <form class="form" action="api/users/createUser" method="POST">
+        <span style="margin-top: 42px;"></span>
+        <input type="text" name="username" required placeholder="Username">
+        <span style="margin-top: 12px;"></span>
+        <input type="email" name="email" required placeholder="Email Address">
+        <span style="margin-top: 12px;"></span>
+        <input type="password" name="password" required placeholder="Password">
+        <span style="margin-top: 12px;"></span>
+        <div class="button">
+            <button type="submit">Siguiente</button>
+        </div>
+    </form>
+
+
+
+</body>
+</html>

@@ -5,8 +5,8 @@ const validateResult= (req, res, next) =>{
         validationResult(req).throw()
         return next()
     }catch(err){
-        res.status(401)
-        res.send({ errors: err.array() })
+        // Renderizo los mensajes de error en la pagina de (signup).
+        res.status(401).render('../pages/signup/index', {errors: err.array()})
     }
 }
 

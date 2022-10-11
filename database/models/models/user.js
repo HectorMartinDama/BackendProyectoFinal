@@ -18,6 +18,10 @@ const userSchema= new mongoose.Schema({
         uniqued: true,
         require: true
     },
+    creationDate: {
+        type: Date,
+        default: Date.now
+    },
     products : [
         {
             type: mongoose.Schema.Types.ObjectId,
