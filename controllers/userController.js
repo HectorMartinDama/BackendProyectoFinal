@@ -1,7 +1,6 @@
 const User= require('../database/models/user') // model (mongoose Schema)
 const bcrypt= require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { default: mongoose } = require('mongoose')
 
 
 
@@ -21,9 +20,9 @@ const createUser= (async (req, res) =>{
 })
 
 const login= (async (req, res)=>{
-    const {email} = req.body
+    const body= req.body
     // recupero el usuario
-    const user= await User.findOne({email: email})
+    const user= await User.findOne({email: body.email})
     // asigno el usuario al token
     const userForToken= {
         id: user.id,

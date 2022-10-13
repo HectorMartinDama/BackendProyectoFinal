@@ -5,8 +5,7 @@ const validateResult= (req, res, next) =>{
         validationResult(req).throw()
         return next()
     }catch(err){
-        // Renderizo los mensajes de error en la pagina de (signup).
-        res.status(401).render('../pages/signup/index', {errors: err.array()})
+        res.status(422).json({errors: err.array()})
     }
 }
 
@@ -15,12 +14,10 @@ const validateResultLogin= (req, res, next) =>{
         validationResult(req).throw()
         return next()
     }catch(err){
-        // Renderizo los mensajes de error en la pagina de (login).
-        res.status(401).render('../pages/login/index', {errors: err.array()})
+        // 422 -> No se pudo realizar la peticion por errores de sintaxis.
+        res.status(422).json({errors: err.array()})
     }
 }
-
-
 
 
 module.exports= { 

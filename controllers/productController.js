@@ -4,17 +4,17 @@ const userExtractor= require('../middleware/userExtractor') // middleware
 
 /* 
     Ejemplo de como llega la autorizacion.
-    Bearer .sdfsdfsdfsdfdsfsdf
+    Bearer sdfsdfsdfsdfdsfsdf
 */
 const createProduct= (async (req, res)=>{
-    const body= req.body
+    const { model, brand } = req.body
     const { userId } = req
     const user= await User.findById(userId)
     
     // Creo el producto
     const product= new Product({
-        modelo: body.modelo, 
-        marca: body.marca,
+        model: model, 
+        brand: brand,
         uid: body.uid,
         user: userId
     })
