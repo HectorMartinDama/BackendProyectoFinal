@@ -1,12 +1,12 @@
 const express= require('express')
 const app= express()
 app.set('view engine', 'ejs')
-const cors= require('cors')
 const path= require('path')
 const mongoose= require('mongoose')
+const handleError= require('../middleware/handleErrors')
 const userRouter= require('../routers/users') // imports routers
+const productRouter= require('../routers/products')
 const viewRouter= require('../routers/views')
-
 
 // connect database
 mongoose.connect(process.env.MONGO_URI).then(()=>{
@@ -15,13 +15,12 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 	console.log('error connecting MongoDB: ' + err.message)
 })
 
-// use
-app.use(express.json()) // middleware
-app.use(express.urlencoded({extended: true}))
-app.use(cors())
+
 app.use(express.static('public')) // Donde cargar los archivos estaticos
 app.use(('/api/users'), userRouter) // asing routers
+app.use(('/api/products'), productRouter)
 app.use(('/'), viewRouter)
+
 
 
 

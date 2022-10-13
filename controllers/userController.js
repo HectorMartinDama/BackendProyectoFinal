@@ -1,42 +1,41 @@
-const User= require('../database/models/models/user') // model (mongoose Schema)
+const User= require('../database/models/user') // model (mongoose Schema)
 const bcrypt= require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { default: mongoose } = require('mongoose')
 
 
 
 const createUser= (async (req, res) =>{
-    const body= req.body
+    const { username, email, password } = req.body
     // encrypt password
     const saltRounds= 10
-    const passwordHash= await bcrypt.hash(body.password, saltRounds)
+    const passwordHash= await bcrypt.hash(password, saltRounds)
 
     const user= new User({
-        username: body.username,
-        email: body.email,
+        username: username,
+        email: email,
         passwordHash
     })
     const savedUser= await user.save()
-    res.redirect('/')
+    res.status(204).redirect('/') // utilizo 204 porque estoy creando un nuevo recurso en la bdd.
 })
 
-const login= (async(req, res)=>{
-    const body= req.body
-    // compruebo si el usuario existe en la base de datos.
-    const user= await User.findOne({email: body.email})
-    const passwordCorrect= user === null
-        ? false
-        : await bcrypt.compare(body.password, user.passwordHash)
-    if(!(user && passwordCorrect)){
-        return res.status(401).json({status: 401, message:"Incorrect email or password"})
-    }
+const login= (async (req, res)=>{
+    const {email} = req.body
+    // recupero el usuario
+    const user= await User.findOne({email: email})
     // asigno el usuario al token
     const userForToken= {
-        email: user.email,
-        id: user._id
+        id: user.id,
+        name: user.username
     }
     // firmo el token con la clave secreta
+    console.log(userForToken)
     const token= jwt.sign(userForToken, process.env.JWT_SECRET)
-    res.status(200).send({token, username: user.username})
+    // Si se logea con exito lo mando al dashboard.
+    //res.status(200).redirect('/dashboard')
+    
+    res.send({token, username: user.username})
 })
 
 

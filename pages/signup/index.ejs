@@ -13,11 +13,11 @@
     <% if(typeof errors != 'undefined') { %>
         <% errors.forEach((error) => { %>
             <p><%= error.msg %></p>
-            <% }) %>
-        <% } %>
+        <% }) %>
+    <% } %>
 
-    
-    <form class="form" action="api/users/createUser" method="POST">
+   
+    <form class="form" action="/api/users/createUser" method="post">
         <span style="margin-top: 42px;"></span>
         <input type="text" name="username" required placeholder="Username">
         <span style="margin-top: 12px;"></span>
@@ -29,8 +29,5 @@
             <button type="submit">Siguiente</button>
         </div>
     </form>
-
-
-
 </body>
 </html>

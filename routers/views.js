@@ -1,7 +1,5 @@
 const viewRouter= require('express').Router()
 
-
-
 viewRouter.get(('/'), (req, res)=>{
     res.render('../pages/home/index')
 })
@@ -21,6 +19,8 @@ viewRouter.get(('/dashboard'), (req, res)=>{
 viewRouter.get('*', (req, res)=>{
     res.status(404).render('../pages/404/index')
 })
+
+
 
 
 

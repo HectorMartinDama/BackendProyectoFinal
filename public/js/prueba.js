@@ -1,3 +1,4 @@
+console.log('JavaScript Vinculado')
 const form= document.querySelector('.form')
 
 
@@ -13,7 +14,7 @@ form.addEventListener('submit', event =>{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(data => console.log('Mesaje', data.))
+    }).then(data => console.log(data))
     .catch(error =>{
         console.log(error)
     })

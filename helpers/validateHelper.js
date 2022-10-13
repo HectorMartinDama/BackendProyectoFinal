@@ -10,4 +10,20 @@ const validateResult= (req, res, next) =>{
     }
 }
 
-module.exports= { validateResult }
+const validateResultLogin= (req, res, next) =>{
+    try{
+        validationResult(req).throw()
+        return next()
+    }catch(err){
+        // Renderizo los mensajes de error en la pagina de (login).
+        res.status(401).render('../pages/login/index', {errors: err.array()})
+    }
+}
+
+
+
+
+module.exports= { 
+    validateResult,
+    validateResultLogin
+}

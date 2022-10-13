@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Cream KICKS</title>
 </head>
 <body>
 
 
-    <form>
-        <input name="email" placeholder="Email Address" required>
-        <input name="password" placeholder="Password" required>
+    <!-- Imprime los errores del formulario -->
+    <% if(typeof errors != 'undefined') { %>
+            <p><%= errors[0].msg %></p>
+    <% } %>
+
+
+    <p>Email: "info.hectoxsxrmartindama@gmail.com",
+        Password": "holamellamohector"</p>
+    <form action="api/users/login" method="post">
+        <input name="email" type="email" placeholder="Email Address" required>
+        <input name="password" type="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
-    <script src="index.js"></script>
-
-
 </body>
 </html>
