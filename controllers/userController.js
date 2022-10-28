@@ -29,11 +29,7 @@ const login= (async (req, res)=>{
         name: user.username
     }
     // firmo el token con la clave secreta
-    console.log(userForToken)
-    const token= jwt.sign(userForToken, process.env.JWT_SECRET)
-    // Si se logea con exito lo mando al dashboard.
-    //res.status(200).redirect('/dashboard')
-    
+    const token= jwt.sign(userForToken, process.env.JWT_SECRET)    
     res.send({token, username: user.username})
 })
 

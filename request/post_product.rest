@@ -1,9 +1,9 @@
 POST http://localhost:3000/api/products/createProduct
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDU1ZjA0NDg5NjgzN2MxNmU5MmY3ZCIsIm5hbWUiOiJlcGVtYXJhZHMiLCJpYXQiOjE2NjU2OTEwMDN9.qK8ioov6L_nCVXpr5HiohDTm-4YTGti8O4SAdCts4RA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDg2ZTRhODIxNDYyNjBlMjNjNDUzNyIsIm5hbWUiOiJVc3VhcmlvUHJ1ZWJhIiwiaWF0IjoxNjY2NzIxMTA1fQ.3xhrEwh4tece9t_o0JUO3H_coVMSSZvezvpHN30BKHo
 
 {
-    "model": "NikeDunk",
+    "model": "Prueba",
     "brand": "Nike",
     "uid": "32423434D"
 }

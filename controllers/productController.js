@@ -7,7 +7,7 @@ const userExtractor= require('../middleware/userExtractor') // middleware
     Bearer sdfsdfsdfsdfdsfsdf
 */
 const createProduct= (async (req, res)=>{
-    const { model, brand } = req.body
+    const { model, brand, uid } = req.body
     const { userId } = req
     const user= await User.findById(userId)
     
@@ -15,7 +15,7 @@ const createProduct= (async (req, res)=>{
     const product= new Product({
         model: model, 
         brand: brand,
-        uid: body.uid,
+        uid: uid,
         user: userId
     })
 
@@ -23,6 +23,7 @@ const createProduct= (async (req, res)=>{
     // meto el producto en la tabla del usuario.
     user.products= user.products.concat(saveProduct.id)
     await user.save()
+    await saveProduct.save()
     res.status(204).json({status: 'ok', message: 'Product Create'})
 })
 

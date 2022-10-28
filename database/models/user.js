@@ -31,7 +31,7 @@ const userSchema= new mongoose.Schema({
 })
 
 // permite que la propiedades se han inicas
-userSchema.plugin(uniqueValidator)
+//userSchema.plugin(uniqueValidator)
 
 
 userSchema.set('toJSON', {
