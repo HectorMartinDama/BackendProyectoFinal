@@ -16,7 +16,7 @@ const createUser= (async (req, res) =>{
         passwordHash
     })
     const savedUser= await user.save()
-    res.status(204).redirect('/') // utilizo 204 porque estoy creando un nuevo recurso en la bdd.
+    res.status(204).json({createUser: 'OK'}) // utilizo 204 porque estoy creando un nuevo recurso en la bdd.
 })
 
 const login= (async (req, res)=>{
@@ -34,8 +34,16 @@ const login= (async (req, res)=>{
 })
 
 
+const info= (async (req, res)=>{
+   const { userId } = req // recupero el id del token
+   const userData= await User.findById(userId)
+   res.status(200).json({username: userData.username, email: userData.email})
+})
+
+
 // exports modules
 module.exports= {
     createUser,
-    login
+    login,
+    info
 }

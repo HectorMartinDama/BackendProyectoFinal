@@ -1,8 +1,6 @@
 const { check, validationResult } = require('express-validator')
 const { validateResult, validateResultLogin } = require('../helpers/validateHelper')
 const User= require('../database/models/user')
-const bcrypt= require('bcrypt')
-const user = require('../database/models/user')
 
 
 
@@ -27,29 +25,7 @@ const validateCreate= [
     }
 ]
 
-// validacion en el login.
-const validateLogin= [
-    check('email').custom(async (value)=>{
-        const existEmail= await User.findOne({email: value})
-        if(!existEmail){
-            return Promise.reject('Incorrect email or password')
-        }
-    }),
-    check('password').custom(async (value)=>{
-        const user= await User.findOne({password: value})
-        const passwordCorrect= user == null
-        ? false
-        : await bcrypt.compare(value, user.passwordHash)
-        if(!passwordCorrect){
-            return Promise.reject('Incorrect email or password')
-        }
-    }),
-    (req, res, next)=>{
-        validateResultLogin(req, res, next)
-    }
-]
 
 module.exports= { 
-    validateCreate,
-    validateLogin
+    validateCreate
 }

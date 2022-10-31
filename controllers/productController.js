@@ -1,6 +1,5 @@
 const Product= require('../database/models/product')
 const User = require('../database/models/user')
-const userExtractor= require('../middleware/userExtractor') // middleware
 
 /* 
     Ejemplo de como llega la autorizacion.
@@ -25,6 +24,11 @@ const createProduct= (async (req, res)=>{
     await user.save()
     await saveProduct.save()
     res.status(204).json({status: 'ok', message: 'Product Create'})
+})
+
+const allProducts= (async (req, res)=>{
+    const { userId } = req // recupero el id del usuario guardado en el token.
+    
 })
 
 

@@ -1,3 +1,5 @@
+
+// Errores del servidor.
 const ERROR_HANDLERS= {
     JsonWebTokenError: (res) =>
         res.status(401).json({errors: 'token missing or invalid'}),

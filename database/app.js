@@ -5,7 +5,6 @@ const cors= require('cors')
 const mongoose= require('mongoose')
 const userRouter= require('../routers/users') // imports routers
 const productRouter= require('../routers/products')
-const viewRouter= require('../routers/views')
 
 // connect database
 mongoose.connect(process.env.MONGO_URI).then(()=>{
@@ -20,7 +19,7 @@ app.use(cors())
 app.use(express.static('public')) // Donde cargar los archivos estaticos
 app.use(('/api/users'), userRouter) // asing routers
 app.use(('/api/products'), productRouter)
-app.use(('/'), viewRouter)
+
 
 
 module.exports= app

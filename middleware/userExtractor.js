@@ -1,4 +1,9 @@
 const jwt= require('jsonwebtoken')
+
+
+/* comprueba que el token de el header es valido y si es valido,
+    devuelve el id del usuario para hacer operaciones con ese usuario.
+*/
 module.exports = (req, res, next) =>{
     const authorization= req.get('authorization')
     let token= ''
@@ -8,7 +13,7 @@ module.exports = (req, res, next) =>{
     }
     // Descodifico el token para saber si el valido.
     const decodedToken= jwt.verify(token, process.env.JWT_SECRET)
-    // Compruebo si tiene el token
+    // Compruebo si tiene el token.
     if(!token || !decodedToken.id){
         return res.status(401).json({error: 'token missing or invalid'})
     }

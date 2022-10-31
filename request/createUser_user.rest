@@ -1,8 +1,0 @@
-POST http://localhost:3000/api/users//createUser
-Content-Type: application/json
-
-{
-    "username": "UsuarioPrueba",
-    "email": "usuariodeprueba@gmail.com",
-    "password": "usuarioprueba123"
-}
