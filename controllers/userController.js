@@ -16,7 +16,7 @@ const createUser= (async (req, res) =>{
         passwordHash
     })
     const savedUser= await user.save()
-    res.status(204).json({createUser: 'OK'}) // utilizo 204 porque estoy creando un nuevo recurso en la bdd.
+    res.status(200).json({createUser: 'OK', message: 'User create'})
 })
 
 const login= (async (req, res)=>{

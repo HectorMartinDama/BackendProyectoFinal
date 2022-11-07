@@ -20,19 +20,21 @@ const createProduct= (async (req, res)=>{
 
     const saveProduct= await product.save()
     // meto el producto en la tabla del usuario.
-    user.products= user.products.concat(saveProduct.id)
+    user.products= user.products.concat(saveProduct._id)
     await user.save()
-    await saveProduct.save()
-    res.status(204).json({status: 'ok', message: 'Product Create'})
+    res.status(200).json({status: 'OK', message: 'Product create'})
 })
+
 
 const allProducts= (async (req, res)=>{
     const { userId } = req // recupero el id del usuario guardado en el token.
-    
+    const products= await Product.find({user: userId}, { model: 1, brand: 1, uid: 1 , _id: 0})
+    res.status(200).json(products)  
 })
 
 
 
 module.exports= {
-    createProduct
+    createProduct,
+    allProducts
 }

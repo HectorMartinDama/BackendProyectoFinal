@@ -5,6 +5,7 @@ const userExtractor= require('../middleware/userExtractor')
 
 productRouter
     .post(('/createProduct'), userExtractor, productController.createProduct)
+    .get(('/allProducts'), userExtractor, productController.allProducts)
 
     
 // export module

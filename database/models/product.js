@@ -13,6 +13,10 @@ const productSchema= new mongoose.Schema({
     uid: {
         type: String,
         require: true
+    },
+    user: {
+        type: String,
+        require: true
     }
 })
 
