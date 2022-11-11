@@ -1,6 +1,7 @@
 const User= require('../database/models/user') // model (mongoose Schema)
 const bcrypt= require('bcrypt')
 const jwt = require('jsonwebtoken')
+//const emailController = require('../controllers/emailController')
 
 
 
@@ -17,6 +18,7 @@ const createUser= (async (req, res) =>{
     })
     const savedUser= await user.save()
     res.status(200).json({createUser: 'OK', message: 'User create'})
+    
 })
 
 const login= (async (req, res)=>{
@@ -29,7 +31,7 @@ const login= (async (req, res)=>{
         name: user.username
     }
     // firmo el token con la clave secreta
-    const token= jwt.sign(userForToken, process.env.JWT_SECRET)    
+    const token= jwt.sign(userForToken, process.env.JWT_SECRET)
     res.send({token, username: user.username})
 })
 

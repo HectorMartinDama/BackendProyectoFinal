@@ -18,7 +18,7 @@ const createProduct= (async (req, res)=>{
         user: userId
     })
 
-    const saveProduct= await product.save()
+    const saveProduct= await product.save() // guardamelo en la tabla Products
     // meto el producto en la tabla del usuario.
     user.products= user.products.concat(saveProduct._id)
     await user.save()
@@ -34,7 +34,3 @@ const allProducts= (async (req, res)=>{
 
 
 
-module.exports= {
-    createProduct,
-    allProducts
-}

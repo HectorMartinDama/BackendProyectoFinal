@@ -24,6 +24,8 @@ app.use(Sentry.Handlers.tracingHandler())
 app.use(handleError)
 app.use(Sentry.Handlers.errorHandler())
 
+
+// Inicia el servidor.
 server.listen(PORT, ()=>{
     console.log(`Server running on: http://localhost:${PORT}`)
 })
