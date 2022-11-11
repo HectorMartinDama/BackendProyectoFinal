@@ -32,5 +32,10 @@ const allProducts= (async (req, res)=>{
     res.status(200).json(products)  
 })
 
+module.exports={
+    createProduct,
+    allProducts
+}
+
 
 

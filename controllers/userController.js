@@ -1,7 +1,7 @@
 const User= require('../database/models/user') // model (mongoose Schema)
 const bcrypt= require('bcrypt')
 const jwt = require('jsonwebtoken')
-//const emailController = require('../controllers/emailController')
+const emailController = require('../controllers/emailController')
 
 
 
@@ -18,7 +18,7 @@ const createUser= (async (req, res) =>{
     })
     const savedUser= await user.save()
     res.status(200).json({createUser: 'OK', message: 'User create'})
-    
+    emailController.sendWelcomeEmail(user) // correo de bienvenida
 })
 
 const login= (async (req, res)=>{

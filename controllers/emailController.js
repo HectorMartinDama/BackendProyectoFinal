@@ -34,4 +34,4 @@ const sendWelcomeEmail = async (user) =>{
 } */
 
 
-//exports.sendWelcomeEmail = (user) => sendWelcomeEmail(user)
+exports.sendWelcomeEmail = (user) => sendWelcomeEmail(user)
